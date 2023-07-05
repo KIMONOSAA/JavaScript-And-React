@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.user-center{
+    width: 350px;
+    height: 250px;
+    margin: 100px auto;
+    border: 2px solid rgb(210, 241, 247);
+    background-color: rgba(157, 248, 248,0.1);
+    box-shadow: 5px 7px 7px rgb(181, 229, 233);
+    border-radius: 0.5rem;
+
+}
+.user-center  > h3{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 24px;
+    color: pink;
+}
+
+.user-one{
+    width: 250px;
+    height: 50px;
+    margin: 30px auto;
+}
+
+.user_value{
+    background: #d6f0f03b;
+    border: 1px solid #caecf1;
+    padding: 3px;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+    border-color: pink;
+    border-radius: 8px;
+}
+.user_id{
+    background: #d6f0f03b;
+    border: 1px solid #caecf1;
+    padding: 3px;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+    border-color: pink;
+    border-radius: 8px;
+}
+
+.cen{
+    width: 250px;
+    height: 35px;
+    margin: 40px 0 0 90px;
+}
+.login{
+    background-color: pink;
+    margin-right: 50px;
+    width: 60px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.registration{
+    background-color: pink;
+    margin-right: 50px;
+    width: 60px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.login:hover{
+    cursor: pointer;
+    background-color: rgb(243, 152, 167);
+}
+.registration:hover{
+    cursor: pointer;
+    background-color: rgb(243, 152, 167);
+}
+
+.labels{
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: pink;
+}
+.pass{
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: pink;
+}
+
+.footer{
+    text-align: right;
+    margin-right: 10px;
+    
+}
+.a{
+    text-decoration: none;
+    color: pink;
+}
+.a:hover{
+    cursor: pointer;
+    color: #f084b1;
+}
+
+.please {
+    margin-bottom: 1rem;
+    height: 1.25rem;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    font-size: 0.7rem;
+    border-radius: 0.25rem;
+    letter-spacing: 0.25rem;
+    text-transform: capitalize;
+  }
+  .please-error {
+    color: #721c24;
+    background: #f8d7da;
+  }
+  .please-success {
+    color: #155724;
+    background: #d4edda;
+  }

@@ -1,0 +1,87 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>积极学习：打印这些产品</title>
+  </head>
+  <body>
+    <ul>
+    </ul>
+    <p>Total:$0.00</p>
+
+    <script>
+      var list = document.querySelector("ul");
+      var totalBox = document.querySelector("p");
+      var total = 0;
+      list.innerHTML = "";
+      totalBox.textContent = "";
+      let products = [
+        "Underpants:6.99",
+        "Socks:5.99",
+        "T-shirt:14.99",
+        "Trousers:31.99",
+        "Shoes:23.99",
+      ];
+      for (var i = 0; i < products.length; i++) {
+        var subArray = products[i].split(":");
+        var name = subArray[0];
+        var price = Number(subArray[1]);
+        total += price;
+        itemText = name + " — $" + price;
+
+        var listItem = document.createElement("li");
+        listItem.textContent = itemText;
+        list.appendChild(listItem);
+      }
+      totalBox.textContent = 'Total: $' + total.toFixed(2);
+    </script>
+  </body>
+</html> -->
+
+<!-- 积极学习：前 5 个搜索 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <ul>
+    </ul>
+    <input type="text"><button>Search</button>
+    <script>
+        let list = document.querySelector('ul');
+        let searchInput = document.querySelector('input');
+        let SearchBtn = document.querySelector('button');
+
+        list.innerHTML = '';
+        let myHistory = [];
+
+        SearchBtn.onclick = function(){
+            if(searchInput.value !== ''){
+                myHistory.unshift(searchInput.value);
+
+                list.innerHTML = '';
+                for(let i = 0;i<myHistory.length;i++){
+                    let itemText = myHistory[i];
+                    let listItem = document.createElement('li');
+                    listItem.textContent = itemText;
+                    list.appendChild(listItem);
+                }
+
+                if(myHistory.length>=5){
+                    myHistory.pop();
+                }
+
+                searchInput.value = '';
+                
+            }
+        }
+    </script>    
+</body>
+</html>

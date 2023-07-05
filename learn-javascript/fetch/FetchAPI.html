@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>AJAX / XHR 网络连线</h3>
+    <input type="file" multiple />
+    <button onclick="getData()">Upload</button>
+    <script>
+      // Promise <pending>
+      //   fetch("/does-not-exist").then((response) => {
+      //     console.log(response.status); // 404
+      //     console.log(response.statusText); // Not Found
+      //   });
+      // 取得纯文字的回应
+      // fetch(网址).then(function(response){
+      //     return response.text();
+      // }).then(function(data){
+      //     console.log(data);
+      // });
+      // 取得json格式的回应
+      //   function getData() {
+      //     fetch(
+      //       "https://cwpeng.github.io/live-records-samples/data/products.json"
+      //     )
+      //       .then(function (response) {
+      //         return response.json();
+      //       })
+      //       .then(function (data) {
+      //         console.log(data);
+      //       });
+      //   }
+      // 支持发送多个文件
+    //   function getData() {
+    //     let imageFormData = new FormData();
+    //     let imageInput = document.querySelector("input[type='file'][multiple]");
+
+    //     for (let i = 0; i < imageInput.files.length; ++i) {
+    //       imageFormData.append("image", imageInput.files[i]);
+    //     }
+
+    //     fetch("cross-origin.com", { method: 'no-cors', body: imageFormData })
+    //       .then((response) => {
+    //         if (response.ok) {
+    //           console.log("Images uploaded successfully.");
+    //         } else {
+    //           console.error("Image upload failed.");
+    //         }
+    //       })
+    //       .catch((error) => {
+    //         console.error("Error occurred during image upload:", error);
+    //       });
+    //   }
+        
+    </script>
+  </body>
+</html>

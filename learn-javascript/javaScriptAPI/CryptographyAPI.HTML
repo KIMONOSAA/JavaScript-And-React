@@ -1,0 +1,187 @@
+<!-- 要使用 CSPRNG 重新实现 Math.random()，可以通过生成一个随机的 32 位数值，然后用它去除
+最大的可能值 0xFFFFFFFF。这样就会得到一个介于 0 和 1 之间的值： -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  function randomFloat() { 
+    // 生成 32 位随机值
+    const fooArray = new Uint32Array(1); 
+    // 最大值是 2^32 –1
+    const maxUint32 = 0xFFFFFFFF; 
+    // 用最大可能的值来除
+    return crypto.getRandomValues(fooArray)[0] / maxUint32; 
+   } 
+   console.log(randomFloat()); // 0.5033651619458955
+  
+  </script>
+</body>
+</html> -->
+<!-- 20.12.2 使用 SubtleCrypto 对象
+Web Cryptography API 重头特性都暴露在了 SubtleCrypto 对象上，可以通过 window.crypto. 
+subtle 访问：
+console.log(crypto.subtle); // SubtleCrypto {}
+这个对象包含一组方法，用于执行常见的密码学功能，如加密、散列、签名和生成密钥。因为所有
+密码学操作都在原始二进制数据上执行，所以 SubtleCrypto 的每个方法都要用到 ArrayBuffer 和
+ArrayBufferView 类型。由于字符串是密码学操作的重要应用场景，因此 TextEncoder 和
+TextDecoder 是经常与 SubtleCrypto 一起使用的类，用于实现二进制数据与字符串之间的相互转换。 -->
+<!-- 通常，在使用时，二进制的消息摘要会转换为十六进制字符串格式。通过将二进制数据按 8 位进行
+分割，然后再调用 toString(16)就可以把任何数组缓冲区转换为十六进制字符串： -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        (async function(){
+            const textEncoder = new TextEncoder();
+            const message = textEncoder.encode('foo');
+            const messageDigest = await crypto.subtle.digest('SHA-256',message);
+
+            const hexDigest = Array.from(new Uint8Array(messageDigest))
+            .map((x) => x.toString(16).padStart(2,'0'))
+            .join('');
+
+            console.log(hexDigest);
+        })();
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      (async function () {
+        const mozillaCdnUrl =
+          "// download-origin.cdn.mozilla.net/pub/firefox/releases/67.0 /";
+        const firefoxBinaryFilename = "linux-x86_64/en-US/firefox-67.0.tar.bz2";
+        const firefoxShaFilename = "SHA512SUMS";
+        console.log("Fetching Firefox binary...");
+        const fileArrayBuffer = await (
+          await fetch(mozillaCdnUrl + firefoxBinaryFilename)
+        ).arrayBuffer();
+        console.log("Calculating Firefox digest...");
+        const firefoxBinaryDigest = await crypto.subtle.digest(
+          "SHA-512",
+          fileArrayBuffer
+        );
+        const firefoxHexDigest = Array.from(new Uint8Array(firefoxBinaryDigest))
+          .map((x) => x.toString(16).padStart(2, "0"))
+          .join("");
+        console.log("Fetching published binary digests...");
+        // SHA 文件包含此次发布的所有 Firefox 二进制文件的摘要，
+        // 因此要根据其格式进制拆分
+        const shaPairs = (
+          await (await fetch(mozillaCdnUrl + firefoxShaFilename)).text()
+        )
+          .split(/\n/)
+          .map((x) => x.split(/\s+/));
+        let verified = false;
+        console.log("Checking calculated digest against published digests...");
+        for (const [sha, filename] of shaPairs) {
+          if (filename === firefoxBinaryFilename) {
+            if (sha === firefoxHexDigest) {
+              verified = true;
+              break;
+            }
+          }
+        }
+        console.log("Verified:", verified);
+      })();
+    </script>
+  </body>
+</html> -->
+
+<!-- 2.CryptoKey与算法 -->
+<!-- 假设要生成一个满足如下条件的对称密钥：
+ 支持 AES-CTR 算法；
+ 密钥长度 128 位；
+ 不能从 CryptoKey 对象中提取；
+ 可以跟 encrypt()和 decrypt()方法一起使用。
+那么可以参考如下代码 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      (async function () {
+        const params = {
+          name: "AES-CTR",
+          length: 128,
+        };
+        const keyUsages = ["encrypt", "decrypt"];
+        const key = await crypto.subtle.generateKey(params, false, keyUsages);
+        console.log(key);
+        // CryptoKey {type: "secret", extractable: true, algorithm: {...}, usages: Array(2)}
+      })();
+    </script>
+  </body>
+</html> -->
+<!-- 这段代码是一个立即执行的异步函数，它使用 Web Cryptography API 来生成、导出和导入加密密钥。
+
+定义参数和选项：
+
+javascript
+Copy code
+const params = {
+  name: 'AES-CTR',
+  length: 128
+};
+const keyUsages = ['encrypt', 'decrypt'];
+const keyFormat = 'raw';
+const isExtractable = true;
+这些变量定义了生成、导出和导入密钥所需的参数和选项。params 对象指定算法名称为 "AES-CTR"，密钥长度为 128 位。keyUsages 数组定义密钥的使用方式，这里是加密和解密。keyFormat 定义导出和导入密钥时使用的格式为原始格式。isExtractable 表示生成的密钥是否可导出。
+
+生成密钥：
+
+javascript
+Copy code
+const key = await crypto.subtle.generateKey(params, isExtractable, keyUsages);
+使用 Web Cryptography API 的 crypto.subtle.generateKey() 方法生成加密密钥。该方法接受参数、是否可导出的标志和密钥使用方式，并返回一个 Promise 对象，该对象解析为生成的密钥。
+
+导出密钥：
+
+javascript
+Copy code
+const rawKey = await crypto.subtle.exportKey(keyFormat, key);
+使用 crypto.subtle.exportKey() 方法导出生成的密钥。该方法接受密钥的格式和要导出的密钥作为参数，并返回一个 Promise 对象，该对象解析为导出的原始密钥。
+
+导入密钥：
+
+javascript
+Copy code
+const importedKey = await crypto.subtle.importKey(keyFormat, rawKey, params.name, isExtractable, keyUsages);
+使用 crypto.subtle.importKey() 方法导入先前导出的密钥。该方法接受密钥的格式、导出的原始密钥、算法名称、是否可导出的标志和密钥使用方式作为参数，并返回一个 Promise 对象，该对象解析为导入的密钥。
+
+输出导入的密钥：
+
+javascript
+Copy code
+console.log(importedKey);
+输出导入的密钥对象。这里使用 console.log() 打印导入的密钥对象。
+
+整体来说，这段代码演示了如何使用 Web Cryptography API 生成、导出和导入加密密钥，并展示了生成的密钥对象的基本属性。 -->
+
+

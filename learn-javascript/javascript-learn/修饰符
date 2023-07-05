@@ -1,0 +1,34 @@
+; 修饰符的完整列表：
+
+; preventDefaultevent.preventDefault()—在运行处理程序之前调用。例如，对于客户端表单处理很有用。
+; stopPropagation— 调用event.stopPropagation()，防止事件到达下一个元素
+; passive— 改进了触摸/滚轮事件的滚动性能（Svelte 会在安全的地方自动添加它）
+; nonpassive— 明确设置passive: false
+; capture— 在捕获阶段而不是冒泡阶段触发处理程序（MDN 文档）
+; once— 在第一次运行后删除处理程序
+; self— 只有当 event.target 是元素本身时才触发处理程序
+; trustedevent.isTrusted— 如果是，则只触发处理程序true，这意味着事件是由用户操作触发的，而不是因为某些 JavaScript 调用element.dispatchEvent(...)
+; 您可以将修饰符链接在一起，例如on:click|once|capture={...}.
+
+
+<script>
+	import Inner from './Inner.svelte';
+
+	function handleMessage(event) {
+		alert(event.detail.text);
+	}
+</script>
+
+<Inner />
+
+<script>
+	function sayHello() {
+		dispatch('message', {
+			text: 'Hello!'
+		});
+	}
+</script>
+
+<button on:click={sayHello}>
+	Click to say hello
+</button>

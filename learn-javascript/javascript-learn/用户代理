@@ -1,0 +1,12 @@
+MozillaVersion 是 Mozilla 版本
+Platform 是 浏览器所在的平台。可能的值包括 Windows、Mac 和 X11（UNIX XWindows）
+Encryption 是 加密能力：U 表示 128 位，I 表示 40 位，N 表示无加密
+OS-or-CPU 是 浏览器所在的操作系统或计算机处理器类型。如果是 Windows 平台，
+则这里是 Windows 的版本（如 WinNT、Win95）。如果是 Mac 平台，则
+这里是 CPU 类型（如 68k、PPC for PowerPC 或 MacIntel）。如果是 X11
+平台，则这里是通过 uname -sm 命名得到的 UNIX 操作系统名
+Language 是 浏览器的目标使用语言
+Prerelease Version 否 最初的设想是 Mozilla预发布版的版本号，现在表示 Gecko 引擎的版本号
+GeckoVersion 是 以 yyyymmdd 格式的日期表示的 Gecko 渲染引擎的版本
+ApplicationProduct 否 使用 Gecko 的产品名称。可能是 Netscape、Firefox 等
+ApplicationProductVersion 否 ApplicationProduct 的版本，区别于 MozillaVersion 和 GeckoVersion

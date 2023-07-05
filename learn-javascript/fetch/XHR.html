@@ -1,0 +1,24 @@
+<!-- 使用 XHR 对象首先要调用 open()方法，这个方法接收 3 个参数：请求类型（"get"、"post"等）、
+请求 URL，以及表示请求是否异步的布尔值。下面是一个例子：
+要发送定义好的请求，必须像下面这样调用 send()方法： -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let xhr = new XMLHttpRequest();
+      xhr.open("get", "example.php", false);
+      xhr.send(null);
+      if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+        alert(xhr.responseText);
+      } else {
+        alert("Request was unsuccessful: " + xhr.status);
+      }
+    </script>
+  </body>
+</html>

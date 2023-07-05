@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Filter Table</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    input[type=text] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Filter Table</h2>
+
+<input type="text" id="myInput" onkeyup="filterTable()" placeholder="Search for names..">
+
+<table id="myTable">
+  <tr>
+    <th>Name</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>USA</td>
+  </tr>
+  <tr>
+    <td>Mary</td>
+    <td>Canada</td>
+  </tr>
+  <tr>
+    <td>David</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>Peter</td>
+    <td>Australia</td>
+  </tr>
+</table>
+
+<script>
+function filterTable() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+

@@ -1,0 +1,135 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="mediaplayer">
+      <div class="video">
+        <video
+          id="player"
+          src="viedo/YOASOBI - アイドル.mp4"
+          poster="mymovie.jpg"
+          width="300"
+          height="200"
+        >
+          Video player not available.
+        </video>
+      </div>
+      <div class="controls">
+        <input type="button" value="Play" id="video-btn" />
+        <span id="curtime">0</span>/<span id="duration">0</span>
+      </div>
+    </div>
+
+    <script>
+      let player = document.getElementById("player"),
+        btn = document.getElementById("video-btn"),
+        curtime = document.getElementById("curtime"),
+        duration = document.getElementById("duration");
+      // 更新时长
+      duration.innerHTML = player.duration;
+      // 为按钮添加事件处理程序
+      btn.addEventListener("click", (event) => {
+        if (player.paused) {
+          player.play();
+          btn.value = "Pause";
+        } else {
+          player.pause();
+          btn.value = "Play";
+        }
+      });
+      // 周期性更新当前时间
+      setInterval(() => {
+        curtime.innerHTML = player.currentTime;
+      }, 250);
+    </script>
+  </body>
+</html> -->
+
+<!-- 之前的html简单播放器就是用了媒体元素这个原理 -->
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Audio Player Example</title>
+  </head>
+  <body>
+    <button id="playButton">Play Audio</button>
+
+    <script>
+      // 定义 EventUtil 对象
+      var EventUtil = {
+        addHandler: function (element, type, handler) {
+          if (element.addEventListener) {
+            element.addEventListener(type, handler, false);
+          } else if (element.attachEvent) {
+            element.attachEvent("on" + type, handler);
+          } else {
+            element["on" + type] = handler;
+          }
+        },
+      };
+
+      var audio = new Audio("Eau de Vie.flac");
+      EventUtil.addHandler(audio, "canplaythrough", function (event) {
+        audio.play();
+      });
+
+      var playButton = document.getElementById("playButton");
+      EventUtil.addHandler(playButton, "click", function (event) {
+        audio.play();
+      });
+    </script>
+  </body>
+</html> -->
+<!-- Navigation Timing API -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const [performanceNavigationTimingEntry] = performance.getEntriesByType('navigation'); 
+console.log(performanceNavigationTimingEntry);
+console.log(performanceNavigationTimingEntry.loadEventEnd -
+ performanceNavigationTimingEntry.loadEventStart);
+  </script>
+</body>
+</html> -->
+
+<!-- //影子 -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Shadow DOM Example</title>
+  <style>
+    div {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    for (let color of ['red', 'green', 'blue']) {
+      const div = document.createElement('div');
+      const shadowDOM = div.attachShadow({ mode: 'open' });
+      document.body.appendChild(div);
+      shadowDOM.innerHTML = `
+        <p>Make me ${color}</p>
+        <style>
+          p {
+            color: ${color};
+          }
+        </style>
+      `;
+    }
+  </script>
+</body>
+</html> -->

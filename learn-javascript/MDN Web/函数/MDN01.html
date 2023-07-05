@@ -1,0 +1,131 @@
+<!-- 函数题1 -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Choose Name</title>
+</head>
+<body>
+  <section id="section"></section>
+
+  <script>
+    const names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada'];
+    const para = document.createElement('p');
+
+    // Add your code here
+    para.innerHTML = names.join(', ');
+
+    // Don't edit the code below here!
+    function chooseName() {
+      para.innerHTML = names.join(', ');
+    }
+
+    chooseName();
+
+    const section = document.getElementById('section');
+    section.innerHTML = ' ';
+    section.appendChild(para);
+  </script>
+</body>
+</html> -->
+
+<!-- //函数题2 -->
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas Example</title>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="300"></canvas>
+
+    <script>
+      // 获取canvas元素和上下文
+      const canvas = document.querySelector("canvas");
+      const ctx = canvas.getContext("2d");
+
+      const x = 50;
+      const y = 60;
+      const width = 100;
+      const height = 75;
+      const color = "blue";
+
+      function canvass(x, y, width, height, color) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, width, height);
+      }
+
+      // 在页面加载完成后执行canvass函数
+      window.onload = function () {
+        canvass(x, y, width, height, color);
+      };
+    </script>
+  </body>
+</html> -->
+<!-- 功能三 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="section"></section>
+    <script>
+      const names = [
+        "Chris",
+        "Li Kang",
+        "Anne",
+        "Francesca",
+        "Mustafa",
+        "Tina",
+        "Bert",
+        "Jada",
+      ];
+      const para = document.createElement("p");
+
+      function random(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      function chooseName(namesArray) {
+        const randomIndex = random(0, namesArray.length - 1);
+        para.textContent = namesArray[randomIndex];
+      }
+
+      window.onload = function () {
+        chooseName(names);
+      };
+      section.innerHTML = "";
+      section.appendChild(para);
+    </script>
+  </body>
+</html> -->
+
+<!-- 函数四 -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Short Names</title>
+</head>
+<body>
+  <section id="section"></section>
+
+  <script>
+    const names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada'];
+    const para = document.createElement('p');
+
+    let isShort = (name) => {
+      return name.length < 5;
+    }
+
+    const shortNames = names.filter(isShort);
+    para.textContent = shortNames;
+
+    const section = document.getElementById('section');
+    section.innerHTML = '';
+    section.appendChild(para);
+  </script>
+</body>
+</html> -->

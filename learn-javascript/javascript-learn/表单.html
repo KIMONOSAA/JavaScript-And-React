@@ -1,0 +1,110 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body> -->
+<!-- <input type="image" src="image\01.webp" />
+    <button type="submit" name="myForm">Submit Form</button> -->
+<!-- <form method="post" id="myForm1">
+        <ul>
+            <li><input type="radio" name="color" value="red">RED</li>
+            <li><input type="radio" name="color" value="green">Green</li>
+            <li><input type="radio" name="color" value="blue">Blue</li>
+        </ul>
+    </form>
+    <script>
+      let form1 = document.getElementById("myForm1");
+      let colorFields = form1.elements["color"];
+      console.log(colorFields.length);
+      
+      let firstColorField = colorFields[0];
+      let firstFormField = form1.elements[0]; -->
+<!-- //   let form = document.getElementById("myForm");
+    //   form.addEventListener("submit", (event) => {
+    //     // 阻止表单提交
+    //     event.preventDefault();
+    //   });
+    //   form.submit();
+//     </script>
+//   </body>
+// </html> -->
+
+<!-- 焦点的运用 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+        <form>
+        <input type="text" name="tel1" id="txtTel1" maxlength="3" />
+        <input type="text" name="tel2" id="txtTel2" maxlength="3" />
+        <input type="text" name="tel3" id="txtTel3" maxlength="4" />
+      </form>
+    <script>
+      function tabForward(event) {
+        let target = event.target;
+        if (target.value.length == target.maxLength) {
+          let form = target.form;
+          for (let i = 0, len = form.elements.length; i < len; i++) {
+            if (form.elements[i] == target) {
+              if (form.elements[i + 1]) {
+                form.elements[i + 1].focus();
+              }
+              return;
+            }
+          }
+        }
+      }
+      let inputIds = ["txtTel1", "txtTel2", "txtTel3"];
+      for (let id of inputIds) {
+        let textbox = document.getElementById(id);
+        textbox.addEventListener("keyup", tabForward);
+      }
+      let textbox1 = document.getElementById("txtTel1");
+      let textbox2 = document.getElementById("txtTel2");
+      let textbox3 = document.getElementById("txtTel3");
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+    <select name="location" id="selLocation">
+      <option value="Sunnyvale, CA">Sunnyvale</option>
+      <option value="Los Angeles, CA">Los Angeles</option>
+      <option value="Mountain View, CA">Mountain View</option>
+      <option value="">China</option>
+      <option>Australia</option>
+    </select>
+</form>
+    <script>
+      let selectbox = document.forms[0].elements["location"];
+      // 推荐
+      let text = selectbox.options[0].text; // 选项文本
+      let value = selectbox.options[0].value; // 选项值
+      let selectedIndex = selectbox.selectedIndex;
+      let selectedOption = selectbox.options[selectedIndex];
+      console.log(
+        `Selected index: ${selectedIndex}\n` +
+          `Selected text: ${selectedOption.text}\n` +
+          `Selected value: ${selectedOption.value}`
+      );
+    </script>
+  </body>
+</html>

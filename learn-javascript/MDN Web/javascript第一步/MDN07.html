@@ -1,0 +1,153 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .output * {
+        box-sizing: border-box;
+      }
+
+      .output ul {
+        padding-left: 0;
+      }
+
+      .output li {
+        display: block;
+        float: left;
+        width: 25%;
+        border: 2px solid white;
+        padding: 5px;
+        height: 40px;
+        background-color: #4a2db6;
+        color: white;
+      }
+
+      html {
+        font-family: sans-serif;
+      }
+
+      h2 {
+        font-size: 16px;
+      }
+
+      .a11y-label {
+        margin: 0;
+        text-align: right;
+        font-size: 0.7rem;
+        width: 98%;
+      }
+
+      body {
+        margin: 10px;
+        background: #f5f9fa;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>实时输出</h2>
+    <div class="output" style="height: 500px; overflow: auto">
+      <label for="month">Select month:</label>
+      <select id="month">
+        <option value="January">一月</option>
+        <option value="February">二月</option>
+        <option value="March">三月</option>
+        <option value="April">四月</option>
+        <option value="May">五月</option>
+        <option value="June">六月</option>
+        <option value="July">七月</option>
+        <option value="August">八月</option>
+        <option value="September">九月</option>
+        <option value="October">十月</option>
+        <option value="November">十一月</option>
+        <option value="December">十二月</option>
+      </select>
+
+      <h1></h1>
+
+      <ul></ul>
+    </div>
+    <script>
+      const select = document.querySelector("select");
+      const list = document.querySelector("ul");
+      const h1 = document.querySelector("h1");
+
+      select.addEventListener("change", () => {
+        const choice = select.value;
+        let days = 31;
+        if(choice === 'February'){
+            days = 28;
+        }else if(choice === 'April' || choice === 'june' || choice === 'September'
+            || choice === 'November'){
+                days = 30;
+            }
+        createCalendar(days, choice);
+      });
+
+      function createCalendar(days, choice) {
+        list.innerHTML = "";
+        h1.textContent = choice;
+        for (let i = 1; i <= days; i++) {
+          const listItem = document.createElement("li");
+          listItem.textContent = i;
+          list.appendChild(listItem);
+        }
+      }
+
+      createCalendar(31, "January");
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inline JavaScript Example</title>
+</head>
+<body>
+  <select id="mySelect">
+    <option value="White">White</option>
+    <option value="Block">Block</option>
+    <option value="Purple">Purple</option>
+    <option value="Yellow">Yellow</option>
+    <option value="Psychedelic">Psychedelic</option>
+  </select>
+
+  <div id="output">
+    Output Text
+  </div>
+
+  <script>
+    const select = document.querySelector('#mySelect');
+    const html = document.querySelector('#output');
+
+    select.addEventListener('change', () => {
+      const choice = select.value;
+      switch (choice) {
+        case 'White':
+          update('white', 'white');
+          break;
+        case 'Block':
+          update('black', 'black');
+          break;
+        case 'Purple':
+          update('purple', 'purple');
+          break;
+        case 'Yellow':
+          update('yellow', 'yellow');
+          break;
+        case 'Psychedelic':
+          update('psychedelic', 'psychedelic');
+          break;
+      }
+    });
+
+    function update(bgColor, textColor) {
+      html.style.backgroundColor = bgColor;
+      html.style.color = textColor;
+    }
+  </script>
+</body>
+</html>

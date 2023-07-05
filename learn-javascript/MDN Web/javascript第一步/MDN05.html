@@ -1,0 +1,117 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Press me</button>
+    <script>
+        const button = document.querySelector('button');
+        button.addEventListener('click',kimo);
+
+        function kimo(){
+            let name = prompt('What is Your Name?');
+            alert('Hello ' + name + ', nice to see you!');
+        }
+    </script>
+</body>
+</html> -->
+<!-- 过滤问候留言 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+    </ul>
+    <script>
+        let Christmas = document.querySelector('ul');
+        Christmas.innerHTML = '';
+        let greetings = ['Happy Birthday!',
+                 'Merry Christmas my love',
+                 'A happy Christmas to all the family',
+                 'You\'re all I want for Christmas',
+                 'Get well soon'];
+
+        for(let i = 0;i<greetings.length;i++){
+            let input = greetings[i];
+            if(input.indexOf('Christmas') !== -1){
+                Christmass = document.createElement('li');
+                Christmass.textContent = input;
+                Christmas.appendChild(Christmass);
+            }
+        }
+    </script>
+</body>
+</html> -->
+
+<!-- 大写修正 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul></ul>
+    <script>
+      let list = document.querySelector("ul");
+      list.innerHTML = "";
+      var city = ["lonDon", "ManCHESTer", "BiRmiNGHAM", "liVERpoOL"];
+      for (let i = 0; i < city.length; i++) {
+        let value = city[i];
+        let slices = value.toLowerCase();
+        let len = slices.slice(0, 1);
+        let newss = slices.replace(len, len.toUpperCase());
+        let result = newss;
+        let listItem = document.createElement("li");
+        listItem.textContent = result;
+        list.appendChild(listItem);
+      }
+    </script>
+  </body>
+</html> -->
+
+<!-- 从原先部分得到新字符串 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+
+    </ul>
+    <script>
+        let list = document.querySelector('ul');
+        list.innerHTML = '';
+        var stations = ['MAN675847583748sjt567654;Manchester Piccadilly',
+                'GNF576746573fhdg4737dh4;Greenfield',
+                'LIV5hg65hd737456236dch46dg4;Liverpool Lime Street',
+                'SYB4f65hf75f736463;Stalybridge',
+                'HUD5767ghtyfyr4536dh45dg45dg3;Huddersfield'];
+        for(let i = 0;i<stations.length;i++){
+            let value = stations[i];
+            let kfirst = value.slice(0,3);
+            let klast = value.slice(value.indexOf(';')+1,value.length);
+            let string = kfirst + ': ' + klast;
+            let listItem = document.createElement('li');
+            listItem.textContent = string;
+            list.appendChild(listItem);
+        }
+    </script>
+</body>
+</html> -->
+

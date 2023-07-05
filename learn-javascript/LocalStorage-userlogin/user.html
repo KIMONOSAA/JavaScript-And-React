@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>用户登录界面</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .center {
+        width: 400px;
+        height: 200px;
+        margin: 100px auto;
+        border: 2px solid #ffc0cb;
+        box-shadow: 2px 2px 10px rgba(255, 192, 203, 0.9);
+      }
+      .center > .koulu {
+        margin: 10px;
+      }
+      @font-face {
+        font-family: "DFShaoNvW5-GB";
+        src: url("fonts/dfshao-nv-w5.woff2") format("woff2"),
+          url("fonts/dfshao-nv-w5.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      h1 {
+        font-family: "DFShaoNvW5-GB", cursive;
+        font-size: 18px;
+        text-align: center;
+        margin-top: 10px;
+      }
+      h4 {
+        font-family: "DFShaoNvW5-GB", cursive;
+        text-align: center;
+      }
+      .center > .koulu > .left_f {
+        width: 260px;
+      }
+      .b1 {
+        margin: 15px auto;
+        font-family: "DFShaoNvW5-GB", cursive;
+        font-size: 15px;
+        text-align: left;
+        height: 20px;
+        line-height: 20px;
+      }
+      #uname {
+        margin-bottom: 20px;
+      }
+      .b2 {
+        margin: 15px auto;
+        font-family: "DFShaoNvW5-GB", cursive;
+        font-size: 15px;
+        text-align: left;
+        height: 20px;
+        line-height: 20px;
+      }
+      .but {
+        margin-top: 20px;
+        display: block;
+        width: 50px;
+        height: 25px;
+        background-color: #ffc0cb; 
+        background-image: linear-gradient(
+          to bottom,
+          #ffc0cb,
+          #ffc0cb
+        ); 
+        border: 1px solid #ffc0cb; 
+        border-radius: 4px; 
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4); 
+        color: #0a0a0a; 
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+      }
+      .but:hover {
+        background-color: #f15c75; 
+      }
+
+      .but:active {
+        background-color: #bc1bfc; 
+        box-shadow: none; 
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+        <ul id="listuser">
+        </ul>
+      </div>    
+    <div class="center">
+      <article><h1>Welcome To The KIMO WebsIte</h1></article>
+      <form class="koulu" onsubmit="return false">
+        <div class="left_f">
+          <label for="uname"><b class="b1">User:</b></label>
+          <input type="text" placeholder="Enter UserName" id="uname" required />
+
+          <label for="psw"><b class="b2">password:</b></label>
+          <input
+            type="password"
+            placeholder="Enter PassWord"
+            id="psw"
+            required
+          />
+          <button class="but" type="submit" onclick="Login()"><h4>登录</h4></button>
+        </div>
+        <div class="right_f"></div>
+      </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.11.1/dist/jquery.min.js"></script>
+    <script>
+        let Arry_s = [];
+        function Login(){
+            let lefts = new Object();
+            let rights = new Object();
+
+            lefts = {
+                name:"",
+                password:btoa('abc@12')
+            };
+            rights = {
+                name:"",
+                password:btoa('bcd@12')
+            };
+
+            Arry_s.push(lefts);
+            Arry_s.push(rights);
+        let username = document.getElementById('uname').value;
+        let password = document.getElementById('psw').value;
+
+        sessionStorage.setItem("currentloggedin",username);
+
+        localStorage.setItem('all_users',JSON.stringify(Arry_s));
+
+        Arry_s = JSON.parse((localStorage.getItem("all_users")));
+        Arry_s.push({name:username,password:password});
+        localStorage.setItem('name',JSON.stringify(Arry_s));
+
+        for(var i = 0;i<Arry_s.length;i++)
+        {
+            var li = document.createElement("li");
+            li.innerHTML=Arry_s[i]['name'];
+            document.getElementById("listuser").appendChild(li);
+        }
+    }
+    </script>
+  </body>
+</html>

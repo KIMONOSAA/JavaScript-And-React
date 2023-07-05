@@ -1,0 +1,39 @@
+call()和apply()都是JavaScript中的函数方法，用于在特定的上下文中调用函数。
+
+这两个方法的作用是改变函数的执行上下文（即函数内部的this值）并立即调用该函数。
+
+call(): call()方法接受一个对象作为参数，该对象将作为函数执行时的this值。随后的参数是要传递给函数的参数列表。
+
+例如：
+
+javascript
+Copy code
+function greet(name) {
+  console.log(`Hello, ${name}! I'm ${this.job}.`);
+}
+
+const person = {
+  job: 'developer'
+};
+
+greet.call(person, 'John');
+在这个例子中，call()方法将person对象作为greet()函数的上下文，并传递了'John'作为参数。当greet()函数被调用时，它会输出：Hello, John! I'm developer.。这样，函数在person对象的上下文中执行。
+
+apply(): apply()方法与call()类似，但是它接受的参数是以数组或类数组形式提供的。第一个参数仍然是要设置为函数上下文的对象。
+
+例如：
+
+javascript
+Copy code
+function sum(a, b) {
+  console.log(`The sum of ${a} and ${b} is ${a + b}.`);
+}
+
+const numbers = [2, 3];
+
+sum.apply(null, numbers);
+在这个例子中，apply()方法将null作为函数的上下文，并传递了numbers数组作为参数。sum()函数被调用时，它会输出：The sum of 2 and 3 is 5.。这样，函数在null上下文中执行，同时使用了数组中的元素作为参数。
+
+无论是call()还是apply()，它们都允许您显式地指定函数的执行上下文，并将参数传递给该函数。这在特定的情况下非常有用，尤其是当您想要调用一个函数，但需要控制它的执行上下文时。
+
+希望这个解释对您有帮助！如果您还有其他问题，请随时提问。
