@@ -1,0 +1,12 @@
+@import './chatgpt';
+@import './variables';
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@100&family=Noto+Sans+SC:wght@400;700;900&display=swap');
+
+*{
+    background: $back-blue;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Asap', sans-serif;
+    font-family: 'Noto Sans SC', sans-serif;
+}
